@@ -11,8 +11,8 @@ int main()
 	World world(Vector2f(0, 1));
 	// Create the ball
 	PhysicsCircle ball;
-	ball.setCenter(Vector2f(400, 100));
-	ball.applyImpulse(Vector2f(30,0));
+	ball.setCenter(Vector2f(300, 100));
+	ball.applyImpulse(Vector2f(.2,0));
 	ball.setRadius(20);
 	world.AddPhysicsBody(ball);
 	// Create the floor
@@ -23,8 +23,9 @@ int main()
 	world.AddPhysicsBody(floor);
 	int thudCount(0);
 	floor.onCollision = [&thudCount](PhysicsBodyCollisionResult result) {
-		cout << "thud " << thudCount << endl;
 		thudCount++;
+		cout << "thud " << thudCount << endl;
+		
 	};
 	//Create ceiling
 	PhysicsRectangle ceiling;
@@ -33,8 +34,9 @@ int main()
 	ceiling.setStatic(true);
 	world.AddPhysicsBody(ceiling);
 	ceiling.onCollision = [&thudCount](PhysicsBodyCollisionResult result) {
-		cout << "thud " << thudCount << endl;
 		thudCount++;
+		cout << "thud " << thudCount << endl;
+
 	};
 	//Create side1
 	PhysicsRectangle side1;
@@ -43,8 +45,9 @@ int main()
 	side1.setStatic(true);
 	world.AddPhysicsBody(side1);
 	side1.onCollision = [&thudCount](PhysicsBodyCollisionResult result) {
-		cout << "thud " << thudCount << endl;
 		thudCount++;
+		cout << "thud " << thudCount << endl;
+		
 	};
 	//Create side2
 	PhysicsRectangle side2;
@@ -53,19 +56,21 @@ int main()
 	side2.setStatic(true);
 	world.AddPhysicsBody(side2);
 	side2.onCollision = [&thudCount](PhysicsBodyCollisionResult result) {
-		cout << "thud " << thudCount << endl;
 		thudCount++;
+		cout << "thud " << thudCount << endl;
+		
 	};
 	//Create center
 	PhysicsRectangle center;
-	center.setSize(Vector2f(30, 30));
+	center.setSize(Vector2f(100, 100));
 	center.setCenter(Vector2f(400, 300));
 	center.setStatic(true);
 	world.AddPhysicsBody(center);
 	int bangCount(0);
 	center.onCollision = [&bangCount](PhysicsBodyCollisionResult result) {
-		cout << "bang " << bangCount << endl;
 		bangCount++;
+		cout << "bang " << bangCount << endl;
+		
 	};
 	Clock clock;
 	Time lastTime(clock.getElapsedTime());
